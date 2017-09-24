@@ -13,10 +13,10 @@ var start = (route, handle) => {
         request.setEncoding('utf8');
 
         // 监听请求
-        var postData = [];
+        var postData = '';
         // 接收被分割的数据块
         request.addListener('data', (postDataChunk) => {
-            postData.push(postDataChunk);
+            postData += postDataChunk;
             // console.log("Received POST data chunk '" + postDataChunk + "'.");
         });
 
