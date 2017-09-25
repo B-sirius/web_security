@@ -34,14 +34,24 @@ var url = 'http://localhost:8001';
             url: url + '/xss_1_get',
             crossDomain: true,
             success: (response) => {
+
+                // unicode码类型
+                response = '\u003cscript\u003ealert("xss");';        
+
                 // 转义 < 和 >
-                // response = response.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                response = response.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+                // 转义 \
+                // response = response.replace(/\\/g, '%5c');
 
                 // 使用jq的html
-                // $renderPlace.html(response);
+                $renderPlace.html(response);
 
                 // 使用jq的append，会利用到innerHTML，unicode码将被转换为字符实体
-                $renderPlace.append('\u003cscript\u003ealert("xss");');
+                // $renderPlace.append(response);
+
+                // 直接修改dom对象的innerHTML
+                // $renderPlace.get(0).innerHTML = response;
             }
         });
     });
