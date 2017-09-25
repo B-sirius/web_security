@@ -34,7 +34,14 @@ var url = 'http://localhost:8001';
             url: url + '/xss_1_get',
             crossDomain: true,
             success: (response) => {
-                $renderPlace.html(response);
+                // 转义 < 和 >
+                // response = response.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+                // 使用jq的html
+                // $renderPlace.html(response);
+
+                // 使用jq的append，会利用到innerHTML，unicode码将被转换为字符实体
+                $renderPlace.append('\u003cscript\u003ealert("xss");');
             }
         });
     });
