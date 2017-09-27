@@ -4,9 +4,7 @@ var url = require('url');
 var start = (route, handle) => {
     var onRequest = (request, response) => {
         var pathname = url.parse(request.url).pathname;
-        var data = url.parse(request.url).query;
-
-        console.log(data);
+        var data = url.parse(request.url).query || '';
 
         // 粗暴的允许跨域
         response.setHeader('Access-Control-Allow-Origin', '*');

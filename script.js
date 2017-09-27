@@ -36,7 +36,7 @@ var url = 'http://localhost:8001';
             success: (response) => {
 
                 // unicode码类型
-                response = '\u003cscript\u003ealert("xss");';        
+                // response = '\u003cscript\u003ealert("xss");';     
 
                 // 转义 < 和 >
                 response = response.replace(/</g, '&lt;').replace(/>/g, '&gt;');
