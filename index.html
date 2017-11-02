@@ -8,15 +8,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="line-container">
+    <div class="row-container">
         <input id="input1" type="text" class="text-input" placeholder="姓名">
         <a id="post1" class="btn" href="javascript:">post</a>
     </div>
-    <div class="line-container">
+    <div class="row-container">
         <span class="text-render">姓名：<span id="render1"></span></span>
         <a id="get1" class="btn" href="javascript:">get</a>
     </div>
-    <img src="http://localhost:8001/csrf?name=thatsgood&sex=male">
+    <div class="row-container">
+        <a id="login" class="btn" href="javascript:">登陆</a>
+    </div>
+    <!-- <img src="http://localhost:8001/csrf?name=sirius&authority=editor"> -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>

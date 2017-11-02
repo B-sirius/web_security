@@ -1,17 +1,18 @@
-'ues strict';
-var url = 'http://localhost:8001';
+'ues strict'
+let url = 'http://localhost:8002';
 
 (() => {
     // 相关dom元素
-    var $input = $('#input1');
-    var $postBtn = $('#post1');
-    var $renderPlace = $('#render1');
-    var $getBtn = $('#get1');
+    let $input = $('#input1')
+    let $postBtn = $('#post1')
+    let $renderPlace = $('#render1')
+    let $getBtn = $('#get1')
+    let $loginBtn = $('#login')
 
     // 按钮监听
     $postBtn.on('click', () => {
         // 取得数据
-        var data = $input.val();
+        let data = $input.val()
 
         // 发出post请求
         $.ajax({
@@ -21,10 +22,10 @@ var url = 'http://localhost:8001';
             url: url + '/xss_1_post',
             crossDomain: true,
             success: (response) => {
-                alert(response);
+                alert(response)
             }
-        });
-    });
+        })
+    })
 
     $getBtn.on('click', () => {
         // 发出post请求
@@ -36,24 +37,38 @@ var url = 'http://localhost:8001';
             success: (response) => {
 
                 // unicode码类型
-                // response = '\u003cscript\u003ealert("xss");';     
+                // response = '\u003cscript\u003ealert("xss")'     
 
                 // 转义 < 和 >
-                response = response.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                response = response.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
                 // 转义 \
-                // response = response.replace(/\\/g, '%5c');
+                // response = response.replace(/\\/g, '%5c')
 
                 // 使用jq的html
-                $renderPlace.html(response);
+                $renderPlace.html(response)
 
                 // 使用jq的append，会利用到innerHTML，unicode码将被转换为字符实体
-                // $renderPlace.append(response);
+                // $renderPlace.append(response)
 
                 // 直接修改dom对象的innerHTML
-                // $renderPlace.get(0).innerHTML = response;
+                // $renderPlace.get(0).innerHTML = response
             }
-        });
-    });
-})();
+        })
+    })
+
+    $loginBtn.on('click', () => {
+        // 发出post请求
+        $.ajax({
+            type: 'post',
+            dataType: 'text',
+            data: '',
+            url: url + '/login',
+            crossDomain: true,
+            success: (response) => {
+                alert(response)
+            }
+        })
+    })
+})()
 

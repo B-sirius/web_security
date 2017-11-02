@@ -1,10 +1,11 @@
-var server = require('./server');
-var router = require('./router');
-var requestHandlers = require('./requestHandlers');
+let server = require('./server')
+let router = require('./router')
+let requestHandlers = require('./requestHandlers')
 
-var handler = {};
-handler['/xss_1_post'] = requestHandlers.xss_1_post;
-handler['/xss_1_get'] = requestHandlers.xss_1_get;
-handler['/csrf'] = requestHandlers.csrf;
+let handler = {}
+handler['/xss_1_post'] = requestHandlers.xss_1_post
+handler['/xss_1_get'] = requestHandlers.xss_1_get
+handler['/csrf'] = requestHandlers.csrf
+handler['/login'] = requestHandlers.login
 
-server.start(router.route, handler);
+server.start(router.route, handler)
